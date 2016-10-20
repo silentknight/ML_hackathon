@@ -21,7 +21,7 @@ def main():
 		if field[0] == 'X':
 			cols += 1
 
-	X = np.zeros((rows, cols), dtype=np.float32)
+	X_train = np.zeros((rows, cols), dtype=np.float32)
 	Y = np.zeros((rows), dtype=np.int8)
 
 	for i in range(1, len(lines)):
@@ -29,7 +29,7 @@ def main():
 		index = int(vals[0])-1
 
 		for j in range(1,len(vals)-1):
-			X[index,j-1] = vals[j]
+			X_train[index,j-1] = vals[j]
 
 		Y[index] = vals[len(vals)-1]
 
@@ -41,10 +41,10 @@ def main():
 		ax = fig.gca()
 		fig.show()
 
-		ax.plot(X[:,i])
+		ax.plot(X_train[:,i])
 		fig.canvas.draw()
 		raw_input('pause : press any key ...')
-		fig.clear()
+		# fig.clear()
 
 if __name__ == '__main__':
 	try:
